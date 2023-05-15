@@ -1,5 +1,10 @@
 import { Request, Response } from "express";
-import { allUser, createUserServie, findOne } from "./user.service";
+import {
+  allUser,
+  createUserServie,
+  findOne,
+  getAllAdmin,
+} from "./user.service";
 
 export const createUser = async (req: Request, res: Response) => {
   const user = await createUserServie(req.body);
@@ -25,5 +30,16 @@ export const singleUser = async (req: Request, res: Response) => {
   res.status(200).json({
     status: "success",
     data: user,
+  });
+};
+
+
+//custom static function
+export const adminUsers = async (req: Request, res: Response) => {
+  const admins = await getAllAdmin();
+
+  res.status(200).json({
+    status: "success",
+    data: admins,
   });
 };

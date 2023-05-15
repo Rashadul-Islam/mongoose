@@ -23,3 +23,10 @@ export const findOne = async (payload: string): Promise<IUser | null> => {
 
   return user;
 };
+
+//calling custom static function
+export const getAllAdmin = async (): Promise<IUser | null[]> => {
+  const admins = await User.getAdmins();
+
+  return admins;
+};
